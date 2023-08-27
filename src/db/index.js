@@ -12,7 +12,7 @@ async function connectToDatabase() {
   try {
     const connection = await client.connect();
     await client.query(` CREATE TABLE IF NOT EXISTS USER_DETAILS(
-            id INTEGER PRIMARY KEY,
+            id SERIAL PRIMARY KEY,
             phoneNumber VARCHAR(20),
             email VARCHAR(100),
             linkedId INTEGER,
@@ -21,6 +21,16 @@ async function connectToDatabase() {
             updatedAt         TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
             deletedAt         TIMESTAMPTZ
           );`);
+    // result = await client.query(
+    //   "INSERT INTO public.USER_DETAILS(email, phoneNumber, linkedId, linkPrecedence, deletedAt) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+    //   ["test@test.com", 6300, null, "primary", null]
+    // );
+    result = await client.query(
+      "select * from public.USER_DETAILS where id = 8"
+    );
+
+    console.log(result.rows.linkedid === undefined);
+
     console.log("Connected to database");
   } catch (ex) {
     console.log("Couldn't connect to database");
