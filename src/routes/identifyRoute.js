@@ -1,11 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const { logicController } = require("../controllers/identifyController");
 
-router.post("/", (req, res) => {
-  res.json({
-    message: "This is a test",
-  });
-});
+router.post("/", logicController);
 
 router.get("/", (req, res) => {
   res.json({
