@@ -6,7 +6,8 @@ const client = new Client({
   host: config.HOST,
   user: config.USER,
   password: config.PASSWORD,
-  database: config.DATABSE,
+  database: config.DATABASE,
+  port: config.PORTDATABASE,
 });
 
 async function connectToDatabase() {

@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const config = require("./config");
 const app = express();
 const identifyRoute = require("./routes/identifyRoute");
-const port = config.PORT || 3000;
+const port = config.PORTAPP || 3000;
 
 app.use(bodyParser.json());
 
