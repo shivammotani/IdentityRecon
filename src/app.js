@@ -7,6 +7,7 @@ const port = config.PORT || 3000;
 
 app.use(bodyParser.json());
 
+//Forward all the request to route /identify to handler identifyRoute
 app.use("/identify/", identifyRoute);
 
 app.get("/", (req, res) => {
